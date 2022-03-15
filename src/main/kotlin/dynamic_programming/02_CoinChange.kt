@@ -3,7 +3,7 @@ package dynamic_programming
 import java.lang.Integer.min
 
 fun main(args: Array<String>) {
-    (coinChange(intArrayOf(1, 2, 5, 6, 7), 9))
+    println(coinChange(intArrayOf(1, 2, 5, 6, 7), 9))
 }
 
 fun coinChange(coins: IntArray, amount: Int): Int {
