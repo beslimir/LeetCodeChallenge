@@ -1,5 +1,7 @@
 package array
 
+import kotlin.math.max
+
 fun main(args: Array<String>) {
     val nums = intArrayOf(7, 1, 5, 3, 6, 4)
 
@@ -7,17 +9,21 @@ fun main(args: Array<String>) {
 }
 
 fun maxProfit(nums: IntArray): Int {
-    var min = Integer.MAX_VALUE
-    var max = 0
+    var l = 0
+    var r = 1
+    var maxP = 0
+    var profit = 0
 
-    for (i in nums) {
-        if (i < min) {
-            min = i
+    while (r < nums.size) {
+        if (nums[l] < nums[r]) {
+            profit = nums[r] - nums[l]
+            maxP = max(maxP, profit)
+        } else {
+            l = r
         }
-        if (i > max) {
-            max = i
-        }
+
+        r++
     }
 
-    return max - min
+    return maxP
 }
