@@ -1,13 +1,13 @@
 package array
 
 fun main(args: Array<String>) {
-    val nums = intArrayOf(-1, 1, 0, -3, 3)
-    for (i in productExceptSelf(nums)) {
+    val nums = intArrayOf(1, 2, 3, 4)
+    for (i in productExceptSelfWithoutDivide(nums)) {
         println(i)
     }
 }
 
-fun productExceptSelf(nums: IntArray): IntArray {
+fun productExceptSelfWithDivide(nums: IntArray): IntArray {
     var resultNums = IntArray(nums.size)
     var prod = 1
     var zero = 0
@@ -33,4 +33,21 @@ fun productExceptSelf(nums: IntArray): IntArray {
     }
 
     return resultNums
+}
+
+fun productExceptSelfWithoutDivide(nums: IntArray): IntArray {
+    var res = IntArray(nums.size) {1}
+    var prefix = 1
+    var postfix = 1
+
+    for (i in nums.indices) {
+        res[i] = prefix
+        prefix *= nums[i]
+    }
+    for (i in nums.size - 1 downTo 0) {
+        res[i] *= postfix
+        postfix *= nums[i]
+    }
+
+    return res
 }
