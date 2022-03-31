@@ -3,7 +3,7 @@ package dynamic_programming
 import kotlin.math.max
 
 fun main(args: Array<String>) {
-    println(houseRobber(intArrayOf(2, 7, 9, 3, 1)))
+    println(houseRobber(intArrayOf(5, 1, 2, 4)))
 }
 
 fun houseRobber(nums: IntArray): Int {
