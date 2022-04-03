@@ -27,3 +27,35 @@ fun maxDepth(root: TreeNode?): Int {
     return 1 + max(maxDepth(root.left), maxDepth(root.right))
 }
 
+//bfd - breadth first search
+//fun maxDepthBFD(root: TreeNode?): Int {
+//    if(root == null) {
+//        return 0
+//    }
+//
+//    var level = 0
+//    var counter = 0
+//    var queue = ArrayDeque<TreeNode>()
+//    queue.add(root)
+//
+//    while (queue.size > counter) {
+//        for (i in 0..queue.size) {
+//            var node = queue.removeLast()
+//            if (node.left != null) {
+//                queue.add(node.left!!)
+//            }
+//            if (node.right != null) {
+//                queue.add(node.right!!)
+//            }
+//        }
+//        counter++
+//        level++
+//    }
+//
+//    return level
+//}
+
+//DFS - depth first search
+//fun maxDepthDFS(root: TreeNode?): Int {
+//    return 0
+//}
