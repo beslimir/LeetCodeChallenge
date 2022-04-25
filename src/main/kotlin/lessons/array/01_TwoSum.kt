@@ -1,8 +1,8 @@
 package lessons.array
 
 fun main(args: Array<String>) {
-    val intArray: IntArray = intArrayOf(2, 7, 11, 15)
-    val target = 18
+    val intArray: IntArray = intArrayOf(3, 3)
+    val target = 6
 
     for (i in twoSum(intArray, target)) {
         println(i)
@@ -10,21 +10,20 @@ fun main(args: Array<String>) {
 }
 
 fun twoSum(nums: IntArray, target: Int): IntArray {
-    var myMap : HashMap<Int, Int> = HashMap<Int, Int> ()
+    val myMap : HashMap<Int, Int> = HashMap()
 
-    for (i in nums) {
-        val temp = target - i
+    for (i in nums.indices) {
+        val temp = target - nums[i]
 
         if (myMap.contains(temp)) {
-            var tempArray = IntArray(2)
-
-            tempArray[1] = nums.indexOf(i)
+            val tempArray = IntArray(2)
             tempArray[0] = myMap[temp]!!
+            tempArray[1] = i
 
             return tempArray
         }
 
-        myMap.put(i, nums.indexOf(i))
+        myMap.put(nums[i], i)
     }
 
     return nums
