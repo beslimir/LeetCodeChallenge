@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
 }
 
 fun longestSubstringWithoutRepeatingChars(str: String): Int {
-    var charSet = mutableSetOf<Char>()
+    val charSet = mutableSetOf<Char>()
     var l = 0
     var res = 0
 
