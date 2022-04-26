@@ -9,22 +9,21 @@ fun minWindowSize(str: String, substr: String): String {
         return ""
     }
 
-    var needMap : HashMap<Char, Int> = HashMap()
-    var windowMap : HashMap<Char, Int> = HashMap()
+    val needMap : HashMap<Char, Int> = HashMap()
+    val windowMap : HashMap<Char, Int> = HashMap()
 
     for(c in substr) {
         needMap[c] = 1 + needMap.getOrDefault(c, 0)
     }
 
     var have = 0
-    var need = needMap.size
+    val need = needMap.size
     var res = intArrayOf(-1, -1)
     var resLen = 999999
     var l = 0
-    var r_pointer = 0
 
     for (r in str.indices) {
-        var c = str[r]
+        val c = str[r]
         windowMap[c] = 1 + windowMap.getOrDefault(c, 0)
 
         if(c in needMap && windowMap[c] == needMap[c]) {
@@ -47,10 +46,10 @@ fun minWindowSize(str: String, substr: String): String {
     }
 
     l = res[0]
-    r_pointer = res[1]
+    val rPointer = res[1]
 
     return if (resLen != 999999) {
-        str.substring(l, r_pointer + 1)
+        str.substring(l, rPointer + 1)
     } else {
         ""
     }
