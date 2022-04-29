@@ -1,14 +1,39 @@
 package lessons.string
 
 fun main(args: Array<String>) {
-    val str = "([)]"
+    val str = "([{[]}])"
 
-    println(validParentheses(str))
+    println(validParentheses2(str))
 }
 
+//other solution
 fun validParentheses(str: String): Boolean {
-    var stack = ArrayDeque<Char>()
-    var hashMap: HashMap<Char, Char> = HashMap()
+    val myMap: HashMap<Char, Char> = HashMap()
+    myMap['('] = ')'
+    myMap['['] = ']'
+    myMap['{'] = '}'
+    var r = 1
+    var l = r - 1
+    val myArray = str.toMutableList()
+
+    while (myArray.size > 0 && r < myArray.size) {
+        if (myArray[r] == myMap[myArray[l]]) {
+            myArray.removeAt(r)
+            myArray.removeAt(l)
+            r = 1
+            l = r - 1
+        } else {
+            l++
+            r++
+        }
+    }
+
+    return myArray.isEmpty()
+}
+
+fun validParentheses2(str: String): Boolean {
+    val stack = ArrayDeque<Char>()
+    val hashMap: HashMap<Char, Char> = HashMap()
     hashMap[')'] = '('
     hashMap[']'] = '['
     hashMap['}'] = '{'
